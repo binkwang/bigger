@@ -1,0 +1,124 @@
+//
+//  Prefix header
+//
+//  The contents of this file are implicitly included at the beginning of every source file.
+//
+
+#import <Availability.h>
+
+#ifndef __IPHONE_3_0
+#warning "This project uses features only available in iOS SDK 3.0 and later."
+#endif
+
+#ifdef __OBJC__
+    #import <UIKit/UIKit.h>
+    #import <Foundation/Foundation.h>
+    #import <AssetsLibrary/ALAssetsLibrary.h>
+
+
+#import "SVProgressHUD.h"
+
+
+
+#define UIColorFromRGB(rValue,gValue,bValue)   \
+            [UIColor colorWithRed:(float)rValue/255.0 \
+                            green:(float)gValue/255.0  \
+                             blue:(float)bValue/255.0 \
+                            alpha:1.0]
+
+#define ImageBgColor        UIColorFromRGB(255,255,255)
+#define ImageTitleColor     UIColorFromRGB(88,110,147)
+
+#define ButtonBorderColor   UIColorFromRGB(200,200,200)
+
+
+#endif
+
+
+//
+//#pragma mark ----private----
+//
+//-(UIImage *)combineImage:(UIImage*)leftImage andTitle:(NSString*)titleStr
+//{
+//    //    CGFloat width = leftImage.size.width * 2;
+//    //    CGFloat height = leftImage.size.height;
+//    //    CGSize offScreenSize = CGSizeMake(width, height);
+//    //
+//    //    UIGraphicsBeginImageContext(offScreenSize);
+//    //
+//    //    CGRect rect = CGRectMake(0, 0, width/2, height);
+//    //    [leftImage drawInRect:rect];
+//    //
+//    //    rect.origin.x += width/2;
+//    //    [rightImage drawInRect:rect];
+//    //
+//    //    UIImage* imagez = UIGraphicsGetImageFromCurrentImageContext();
+//    //
+//    //    UIGraphicsEndImageContext();
+//    //
+//    //    return imagez;
+//    
+//    
+//    CGFloat width = leftImage.size.width;
+//    CGFloat height = leftImage.size.height + 40;
+//    CGSize offScreenSize = CGSizeMake(width, height);
+//    
+//    UIGraphicsBeginImageContext(offScreenSize);
+//    
+//    
+//    //画原始图形
+//    CGRect rect = CGRectMake(0, 0, width, leftImage.size.height);
+//    [leftImage drawInRect:rect];
+//    
+//    //画标题
+//    rect.origin.y += leftImage.size.height;
+//    UIImage *titleImage = [self imageFromText:titleStr width:width height:40];
+//    [titleImage drawInRect:rect];
+//    
+//    UIImage* imagez = UIGraphicsGetImageFromCurrentImageContext();
+//    
+//    UIGraphicsEndImageContext();
+//    
+//    return imagez;
+//}
+//
+//
+//-(UIImage *)imageFromText:(NSString *)text width:(float)width height:(float)height
+//{
+//    // set the font type and size
+//    CGSize size  = CGSizeMake(width, height);// [text sizeWithFont:font];
+//    
+//    // check if UIGraphicsBeginImageContextWithOptions is available (iOS is 4.0+)
+//    if (UIGraphicsBeginImageContextWithOptions != NULL)
+//        UIGraphicsBeginImageContextWithOptions(size,NO,0.0);
+//        else
+//            // iOS is < 4.0
+//            UIGraphicsBeginImageContext(size);
+//            
+//            // optional: add a shadow, to avoid clipping the shadow you should make the context size bigger
+//            
+//            CGContextRef ctx = UIGraphicsGetCurrentContext();
+//            CGContextSetShadowWithColor(ctx, CGSizeMake(1.0, 1.0), 5.0, [[UIColor grayColor] CGColor]);
+//            
+//            // draw in context, you can use  drawInRect/drawAtPoint:withFont:
+//            //[text drawAtPoint:CGPointMake(0.0, 0.0) withFont:font];
+//            //    [text drawInRect:CGRectMake(0, 0, width, height) withFont:font];
+//            
+//            NSMutableParagraphStyle *paragraphStyle = [[NSMutableParagraphStyle alloc] init];
+//            [paragraphStyle setAlignment: NSTextAlignmentLeft];
+//    NSDictionary *attribs = [NSDictionary dictionaryWithObjectsAndKeys:
+//                             [UIFont systemFontOfSize:10.f],NSFontAttributeName,
+//                             paragraphStyle,NSParagraphStyleAttributeName,
+//                             ImageTitleColor,NSForegroundColorAttributeName,
+//                             [UIColor greenColor],NSBackgroundColorAttributeName,
+//                             nil];
+//    [text drawInRect:CGRectMake(0, 0, width, height) withAttributes:attribs];
+//    
+//    
+//    
+//    // transfer image
+//    UIImage *image = UIGraphicsGetImageFromCurrentImageContext();
+//    UIGraphicsEndImageContext();
+//    
+//    return image;
+//}
